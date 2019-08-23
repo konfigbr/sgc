@@ -1,0 +1,57 @@
+<ui:composition template="/WEB-INF/template/LayoutPadrao.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:o="http://omnifaces.org/ui">
+
+    <ui:define name="titulo">#{cadastroVeiculoBean.editando ? 'Edição de veiculo' : 'Novo veiculo'}</ui:define>
+    
+    <ui:define name="corpo">
+    	<f:metadata>
+    		<o:viewParam name="veiculo" value="#{cadastroVeiculoBean.veiculo}" />
+    		<f:viewAction action="#{cadastroVeiculoBean.inicializar}" />
+    	</f:metadata>
+
+    	<h:form id="frm">
+			<p:focus context="frm" />
+			
+	    	<h1>#{cadastroVeiculoBean.editando ? 'Edição de veiculo' : 'Novo veiculo'}</h1>
+	    	
+	    	<p:messages autoUpdate="true" closable="true" />
+	    	
+	    	<p:toolbar style="margin-top: 20px">
+	    		<p:toolbarGroup>
+	    			<p:button value="Novo" outcome="/veiculos/CadastroVeiculo" />
+	    			<p:commandButton value="Salvar" id="botaoSalvar"
+	    				action="#{cadastroVeiculoBean.salvar}" update="@form"
+	    				process="@this capaPanelGrid"
+	    				validateClient="false" />
+	    		</p:toolbarGroup>
+	    		<p:toolbarGroup align="right">
+	    			<p:button value="Pesquisa" outcome="/veiculos/PesquisaVeiculos" />
+	    		</p:toolbarGroup>
+	    	</p:toolbar>
+	    	
+	    	<p:panelGrid columns="2" id="capaPanelGrid" style="width: 100%; margin-top: 20px"
+	    			columnClasses="rotulo, campo">
+	    		<p:outputLabel value="Placa Carreta" for="placaCarreta"/>
+	    		<p:inputText id="placaCarreta" size="60" maxlength="80" value="#{cadastroVeiculoBean.veiculo.placaCarreta}" />	    		
+	    		
+	    		<p:outputLabel value="Placa Cavalo" for="placaCavalo"/>
+	    		<p:inputText id="placaCavalo" size="60" maxlength="80" value="#{cadastroVeiculoBean.veiculo.placaCavalo}" />
+	    		
+	    		<p:outputLabel value="Capacidade" for="capacidade"/>
+	    		<p:inputText id="capacidade" size="60" maxlength="80" value="#{cadastroVeiculoBean.veiculo.capacidade}" /> 
+	    		
+	    		<p:outputLabel value="Compartimentos" for="compartimentos"/>
+	    		<p:inputText id="compartimentos" size="60" maxlength="80" value="#{cadastroVeiculoBean.veiculo.compartimentos}" />  
+	    		
+	    		<p:outputLabel value="Lacres" for="lacres"/>
+	    		<p:inputText id="lacres" size="60" maxlength="80" value="#{cadastroVeiculoBean.veiculo.lacres}" />  
+	    		   		
+	    	</p:panelGrid>    	
+    	</h:form>
+    </ui:define>
+</ui:composition>
