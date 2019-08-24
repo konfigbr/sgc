@@ -34,7 +34,7 @@
 				symbolStay: false,
 				thousands: ',',
 				decimal: '.',
-				precision: 2,
+				precision: 4,
 				defaultZero: true,
 				allowZero: false,
 				allowNegative: false
@@ -227,7 +227,7 @@
 
 					if (len==0) {
 						if (!settings.defaultZero) return t;
-						t = '0.00';
+						t = '0.000000';
 					}
 
 					for (var i = 0; i<len; i++) {

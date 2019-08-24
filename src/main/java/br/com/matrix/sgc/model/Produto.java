@@ -66,7 +66,7 @@ public class Produto implements Serializable {
 	}
 
 	@NotNull(message = "Valor unitário é obrigatório")
-	@Column(name="valor_unitario", nullable = false, precision = 10, scale = 2)
+	@Column(name="valor_unitario", nullable = false, precision = 7, scale = 6)
 	public BigDecimal getValorUnitario() {
 		return valorUnitario;
 	}
