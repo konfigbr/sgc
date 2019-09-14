@@ -17,7 +17,7 @@ import br.com.matrix.sgc.util.jsf.FacesUtil;
 @ViewScoped
 public class CadastroClienteBean implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+private static final long serialVersionUID = 1L;
 	
 	private Cliente cliente;
 	

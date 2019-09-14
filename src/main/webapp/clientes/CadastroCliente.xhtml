@@ -6,7 +6,7 @@
     xmlns:p="http://primefaces.org/ui"
     xmlns:o="http://omnifaces.org/ui">
 
-    <ui:define name="titulo">#{cadastroClienteBean.editando ? 'Edição de cliente' : 'Novo cliente'}</ui:define>
+      <ui:define name="titulo">#{cadastroClienteBean.editando ? 'Edição de cliente' : 'Novo cliente'}</ui:define>
     
     <ui:define name="corpo">
     	<f:metadata>
@@ -80,13 +80,13 @@
 	    			<h:outputText value="#{endereco.cidade}" />
 	    		</p:column>
 	    		<p:column style="width: 100px; text-align: center">
-	    			<p:commandButton icon="ui-icon-pencil" title="Editar"
+	    			<!-- <p:commandButton icon="ui-icon-pencil" title="Editar"
 	    				process="@this" update=":frm:enderecoPanelGroup"
 	    				onsuccess="PF('enderecoDialogWidgetVar').show()"
 	    				actionListener="#{cadastroClienteBean.editarEndereco(endereco)}">
 	    				<p:resetInput target="enderecoDialog" />
     				</p:commandButton>
-	    			
+ -->	    			
 	    			<p:commandButton icon="ui-icon-trash" title="Excluir" process="@this"
 	    				update="enderecoDataTable"
 	    				action="#{cadastroClienteBean.excluirEndereco(endereco)}"></p:commandButton>
@@ -94,7 +94,7 @@
 	    	</p:dataTable>
 	    		
 	    	<p:dialog header="Inclusão de endereço" id="enderecoDialog" widgetVar="enderecoDialogWidgetVar"
-	    		modal="true">
+	    		modal="true" dynamic="true">
 	    		<h:panelGroup id="enderecoPanelGroup">
 	    			<p:messages id="enderecoMessages" autoUpdate="false" />
 	    			

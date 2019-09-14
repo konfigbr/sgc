@@ -1,11 +1,15 @@
 package br.com.matrix.sgc.controller;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import br.com.matrix.sgc.model.Fornecedor;
 import br.com.matrix.sgc.model.LancamentoPagar;
+import br.com.matrix.sgc.repository.Fornecedores;
 import br.com.matrix.sgc.service.CadastroContasPagarService;
 import br.com.matrix.sgc.service.NegocioException;
 import br.com.matrix.sgc.util.jsf.FacesUtil;
@@ -17,6 +21,11 @@ public class CadastroLancamentoPagarBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private LancamentoPagar lancamentoPagar;
+	
+	@Inject
+	private Fornecedores fornecedores;
+	
+	private List<Fornecedor> listaFornecedores;
 
 	@Inject
 	private CadastroContasPagarService cadastroContasPagarService;
@@ -25,6 +34,8 @@ public class CadastroLancamentoPagarBean implements Serializable {
 		if (lancamentoPagar == null) {
 			limpar();
 		}
+		
+		this.listaFornecedores = this.fornecedores.fornecedores();
 	}
 
 	public void limpar() {
@@ -48,6 +59,18 @@ public class CadastroLancamentoPagarBean implements Serializable {
 
 	public void setLancamentoPagar(LancamentoPagar lancamentoPagar) {
 		this.lancamentoPagar = lancamentoPagar;
+	}
+	
+	public Fornecedores getFornecedores() {
+		return fornecedores;
+	}
+
+	public void setFornecedores(Fornecedores fornecedores) {
+		this.fornecedores = fornecedores;
+	}
+	
+	public List<Fornecedor> getListaFornecedores() {
+		return listaFornecedores;
 	}
 
 	public boolean isEditando() {

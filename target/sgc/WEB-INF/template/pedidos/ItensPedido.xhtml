@@ -27,8 +27,8 @@
 			</p:autoComplete>
 		</p:column>
 		<p:column headerText="Valor unitário" style="text-align: right; width: 120px">
-			<h:outputText value="#{item.valorUnitario}">
-				<f:convertNumber type="currency"/>
+			<h:outputText value="#{item.valorUnitario}" size="10" maxlength="10" styleClass="moeda" >
+				<f:convertNumber maxFractionDigits="4" minFractionDigits="4"/>
 			</h:outputText>
 		</p:column>
 		<p:column headerText="Quantidade" style="text-align: center; width: 100px">
@@ -52,8 +52,8 @@
 		</p:column>
 		
 		<p:column headerText="Valor total" style="text-align: right; width: 100px">
-			<h:outputText value="#{item.valorTotal}">
-				<f:convertNumber type="currency"/>
+			<h:outputText value="#{item.valorTotal}" size="10" maxlength="10" styleClass="moeda">
+					<f:convertNumber maxFractionDigits="4" minFractionDigits="4"/>
 			</h:outputText>
 		</p:column>
 		

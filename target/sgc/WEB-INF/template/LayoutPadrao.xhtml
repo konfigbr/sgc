@@ -72,12 +72,12 @@
 		<p:separator style="margin-top: 20px"/>
 		
 		<footer>
-			Sistemas de Gerenciamento Comercial - SGC			
+			SGC - Sistemas de Gerenciamento Comercial - ©2019, Matrix Systems
 		</footer>
 		
 		<script>
 			function configurarMoeda() {
-				$(".moeda").maskMoney({ decimal: ",", thousands: ".", allowZero: true });
+				$(".moeda").maskMoney({ decimal: ",", precision: 4 ,thousands: ".", allowZero: true });
 			}
 			
 			$(document).ready(function() {

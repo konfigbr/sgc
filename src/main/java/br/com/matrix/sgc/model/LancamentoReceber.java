@@ -3,15 +3,19 @@ package br.com.matrix.sgc.model;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
@@ -27,6 +31,7 @@ public class LancamentoReceber implements Serializable {
 	private Date dataPagamento;
 	private BigDecimal valor = BigDecimal.ZERO;
 	private String observacao;
+	private Pedido pedido;
 
 	@Id
 	@GeneratedValue
@@ -71,7 +76,7 @@ public class LancamentoReceber implements Serializable {
 		this.dataVencimento = dataVencimento;
 	}
 
-	@NotNull
+	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "data_pagamento", nullable = true)
 	public Date getDataPagamento() {
@@ -98,6 +103,17 @@ public class LancamentoReceber implements Serializable {
 
 	public void setObservacao(String observacao) {
 		this.observacao = observacao;
+	}
+	
+	@NotNull
+	@OneToOne
+	@JoinColumn(name = "pedido_id", nullable = false)
+	public Pedido getPedido() {
+		return pedido;
+	}
+
+	public void setPedido(Pedido pedido) {
+		this.pedido = pedido;
 	}
 
 	@Override

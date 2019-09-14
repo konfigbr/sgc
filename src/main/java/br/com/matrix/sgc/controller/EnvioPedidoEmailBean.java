@@ -32,7 +32,7 @@ public class EnvioPedidoEmailBean implements Serializable {
 	public void enviarPedido() {
 		MailMessage message = mailer.novaMensagem();
 		
-		message.to(this.pedido.getCliente().getEmail())
+		message.to(this.pedido.getFornecedor().getEmail())
 			.subject("Pedido " + this.pedido.getId())
 			.bodyHtml(new VelocityTemplate(getClass().getResourceAsStream("/emails/pedido.template")))
 			.put("pedido", this.pedido)

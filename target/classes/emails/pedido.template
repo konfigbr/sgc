@@ -3,7 +3,7 @@
     	<meta charset="utf-8"/>    	
         <table>
             <tr>
-                <td style="width: 100px">Número:</td>
+                <td style="width: 100px">Numero:</td>
                 <td>$pedido.id</td>
             </tr>
             <tr>
@@ -11,8 +11,12 @@
                 <td>$pedido.cliente.nome</td>
             </tr>
             <tr>
+            	<td>Endereço:</td>
+            	<td>$pedido.cliente.enderecos.logradouro</td>
+            </tr>
+            <tr>
                 <td>Valor total:</td>
-                <td>$numberTool.format("¤ #0.00", $pedido.valorTotal, $locale)</td>
+                <td>$numberTool.format("R$ #0.00", $pedido.valorTotal, $locale)</td>
             </tr>
         </table>
         
@@ -20,7 +24,7 @@
         <table border="1" cellspacing="0" cellpadding="3">
             <tr>
                 <th>Produto</th>
-                <th>Valor unitário</th>
+                <th>Valor unitario</th>
                 <th>Quantidade</th>
                 <th>Valor total</th>
             </tr>
@@ -28,9 +32,9 @@
             	#if ($item.produto.id)
 	            <tr>
 	                <td>$item.produto.nome</td>
-	                <td>$numberTool.format("¤ #0.00", $item.produto.valorUnitario, $locale)</td>
+	                <td>$numberTool.format("R$ #0.0000", $item.produto.valorUnitario, $locale)</td>
 	                <td>$item.quantidade</td>
-	                <td>$numberTool.format("¤ #0.00", $item.valorTotal, $locale)</td>
+	                <td>$numberTool.format("R$ #0.0000", $item.valorTotal, $locale)</td>
 	            </tr>
 	            #end
             #end

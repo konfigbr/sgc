@@ -14,7 +14,6 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.primefaces.event.SelectEvent;
 
 import br.com.matrix.sgc.model.Cliente;
-import br.com.matrix.sgc.model.EnderecoEntrega;
 import br.com.matrix.sgc.model.FormaPagamento;
 import br.com.matrix.sgc.model.Fornecedor;
 import br.com.matrix.sgc.model.ItemPedido;
@@ -63,8 +62,7 @@ public class CadastroPedidoBean implements Serializable {
 	
 	private String sku;
 	
-	private String placaCarreta;
-	
+	private String placaCarreta;	
 	
 	@Produces
 	@PedidoEdicao
@@ -116,7 +114,6 @@ public class CadastroPedidoBean implements Serializable {
 	
 	private void limpar() {
 		pedido = new Pedido();
-		pedido.setEnderecoEntrega(new EnderecoEntrega());
 	}
 	
 	public void pedidoAlterado(@Observes PedidoAlteradoEvent event) {

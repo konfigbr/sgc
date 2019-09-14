@@ -31,6 +31,8 @@ public class PesquisaPedidosBean implements Serializable {
 	@Inject
 	private Pedidos pedidos;
 	
+	private Pedido pedidoSelecionado;
+	
 	private PedidoFilter filtro;
 	private LazyDataModel<Pedido> model;
 	
@@ -88,6 +90,14 @@ public class PesquisaPedidosBean implements Serializable {
 
 	public LazyDataModel<Pedido> getModel() {
 		return model;
+	}
+
+	public Pedido getPedidoSelecionado() {
+		return pedidoSelecionado;
+	}
+
+	public void setPedidoSelecionado(Pedido pedidoSelecionado) {
+		this.pedidoSelecionado = pedidoSelecionado;
 	}
 	
 }

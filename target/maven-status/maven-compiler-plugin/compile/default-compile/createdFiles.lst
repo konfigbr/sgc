@@ -1,6 +1,5 @@
 br\com\matrix\sgc\controller\PesquisaPedidosBean$1.class
 br\com\matrix\sgc\controller\PesquisaClientesBean.class
-br\com\matrix\sgc\model\EnderecoEntrega.class
 br\com\matrix\sgc\validation\SkuClientValidationConstraint.class
 br\com\matrix\sgc\repository\filter\VeiculoFilter.class
 br\com\matrix\sgc\validation\SKU.class
@@ -20,6 +19,7 @@ br\com\matrix\sgc\model\Categoria.class
 br\com\matrix\sgc\controller\PesquisaLancamentosPagarBean.class
 br\com\matrix\sgc\service\EstoqueService.class
 br\com\matrix\sgc\controller\CadastroLancamentoPagarBean.class
+br\com\matrix\sgc\repository\filter\LancamentoReceberFilter.class
 br\com\matrix\sgc\converter\CategoriaConverter.class
 br\com\matrix\sgc\service\CadastroPedidoService.class
 br\com\matrix\sgc\controller\GraficoPedidosCriadosBean.class
@@ -34,12 +34,14 @@ br\com\matrix\sgc\repository\filter\PedidoFilter.class
 br\com\matrix\sgc\service\CadastroProdutoService.class
 br\com\matrix\sgc\controller\CadastroMotoristaBean.class
 br\com\matrix\sgc\model\Endereco.class
+br\com\matrix\sgc\controller\CadastroLancamentoReceberBean.class
 br\com\matrix\sgc\repository\filter\MotoristaFilter.class
 br\com\matrix\sgc\controller\CadastroPedidoBean.class
 br\com\matrix\sgc\controller\PesquisaVeiculosBean.class
 br\com\matrix\sgc\model\Motorista.class
 br\com\matrix\sgc\controller\RelatorioPedidosEmitidosBean.class
 br\com\matrix\sgc\model\StatusPedido.class
+br\com\matrix\sgc\controller\RelatorioPedidoBean.class
 br\com\matrix\sgc\controller\PedidoAlteradoEvent.class
 br\com\matrix\sgc\converter\UsuarioConverter.class
 br\com\matrix\sgc\service\CadastroFornecedorService.class
@@ -60,6 +62,7 @@ br\com\matrix\sgc\service\NegocioException.class
 br\com\matrix\sgc\repository\Categorias.class
 br\com\matrix\sgc\controller\PesquisaMotoristasBean.class
 br\com\matrix\sgc\converter\FornecedorConverter.class
+br\com\matrix\sgc\repository\LancamentosReceber.class
 br\com\matrix\sgc\controller\CancelamentoPedidoBean.class
 br\com\matrix\sgc\controller\LoginBean.class
 br\com\matrix\sgc\model\vo\DataValor.class

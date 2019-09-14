@@ -41,6 +41,14 @@
 				<p:inputText id="descricao" size="60" maxlength="80"
 					value="#{cadastroLancamentoPagarBean.lancamentoPagar.descricao}" />
 
+				 <p:outputLabel value="Fornecedor" for="fornecedor"/>
+         			<p:selectOneMenu id="fornecedor" value="#{cadastroLancamentoPagarBean.lancamentoPagar.fornecedor}"
+        					 style="width:450px">
+            			<f:selectItem itemLabel="Selecione" />
+            			<f:selectItems value="#{cadastroLancamentoPagarBean.listaFornecedores}" var="fornecedor"
+            			itemValue="#{fornecedor}" itemLabel="#{fornecedor.nome}" />
+        			</p:selectOneMenu>
+
 				<p:outputLabel value="Data Lançamento" for="dataLancamento" />
 				<p:calendar id="dataLancamento" size="10" maxlength="10" pattern="dd/mm/yyyy"
 					value="#{cadastroLancamentoPagarBean.lancamentoPagar.dataLancamento}" />
@@ -54,11 +62,10 @@
 					value="#{cadastroLancamentoPagarBean.lancamentoPagar.dataPagamento}" />
 
 				<p:outputLabel value="Valor" for="valor" />				
-				<p:inputText id="valor" size="10" maxlength="10"
+				<p:inputText id="valor" size="12" maxlength="12"
 					styleClass="moeda" value="#{cadastroLancamentoPagarBean.lancamentoPagar.valor}">
-					<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />					
+					<f:convertNumber maxFractionDigits="4" minFractionDigits="4" />					
 				</p:inputText>
-
 
 			</p:panelGrid>
 

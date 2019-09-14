@@ -6,7 +6,6 @@ import javax.enterprise.context.RequestScoped;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.inject.Named;
-
 import br.com.matrix.sgc.model.Pedido;
 import br.com.matrix.sgc.service.EmissaoPedidoService;
 import br.com.matrix.sgc.service.NegocioException;
@@ -25,6 +24,7 @@ public class EmissaoPedidoBean implements Serializable {
 	@PedidoEdicao
 	private Pedido pedido;
 	
+		
 	@Inject
 	private Event<PedidoAlteradoEvent> pedidoAlteradoEvent;
 	
@@ -34,7 +34,6 @@ public class EmissaoPedidoBean implements Serializable {
 		try {
 			this.pedido = this.emissaoPedidoService.emitir(this.pedido);
 			this.pedidoAlteradoEvent.fire(new PedidoAlteradoEvent(this.pedido));
-			
 			FacesUtil.addInfoMessage("Pedido emitido com sucesso!");
 		} catch (NegocioException ne) {
 			FacesUtil.addErrorMessage(ne.getMessage());

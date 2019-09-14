@@ -5,10 +5,8 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -43,8 +41,7 @@ public class Pedido implements Serializable {
 	private Cliente cliente;
 	private Fornecedor fornecedor;
 	private Motorista motorista;
-	private Veiculo veiculo;
-	private EnderecoEntrega enderecoEntrega;
+	private Veiculo veiculo;	
 	private List<ItemPedido> itens = new ArrayList<>();
 
 	@Id
@@ -193,15 +190,6 @@ public class Pedido implements Serializable {
 
 	public void setVeiculo(Veiculo veiculo) {
 		this.veiculo = veiculo;
-	}
-
-	@Embedded
-	public EnderecoEntrega getEnderecoEntrega() {
-		return enderecoEntrega;
-	}
-
-	public void setEnderecoEntrega(EnderecoEntrega enderecoEntrega) {
-		this.enderecoEntrega = enderecoEntrega;
 	}
 
 	@OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
