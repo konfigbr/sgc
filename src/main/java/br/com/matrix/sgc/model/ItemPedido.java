@@ -2,7 +2,6 @@ package br.com.matrix.sgc.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -43,7 +42,7 @@ public class ItemPedido implements Serializable {
 		this.quantidade = quantidade;
 	}
 
-	@Column(name = "valor_unitario", nullable = false, precision = 10, scale = 2)
+	@Column(name = "valor_unitario", nullable = false, precision = 10, scale = 4)
 	public BigDecimal getValorUnitario() {
 		return valorUnitario;
 	}
@@ -51,7 +50,7 @@ public class ItemPedido implements Serializable {
 	public void setValorUnitario(BigDecimal valorUnitario) {
 		this.valorUnitario = valorUnitario;
 	}
-
+	
 	@ManyToOne
 	@JoinColumn(name = "produto_id", nullable = false)
 	public Produto getProduto() {
@@ -107,15 +106,5 @@ public class ItemPedido implements Serializable {
 		return this.getProduto() != null && this.getProduto().getId() != null;
 	}
 	
-	@Transient
-	public boolean isEstoqueSuficiente() {
-		return this.getPedido().isEmitido() || this.getProduto().getId() == null 
-			|| this.getProduto().getQuantidadeEstoque() >= this.getQuantidade(); 
-	}
-	
-	@Transient
-	public boolean isEstoqueInsuficiente() {
-		return !this.isEstoqueSuficiente();
-	}
 
 }

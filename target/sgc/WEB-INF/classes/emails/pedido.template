@@ -2,22 +2,98 @@
     <body>
     	<meta charset="utf-8"/>    	
         <table>
+        	  <tr>
+                <td>De:</td>
+                <td>$pedido.vendedor.nome</td>
+              </tr>
+              <tr>
+                <td>Para:</td>
+                <td>$pedido.cliente.contato</td>                                
+              </tr>
+              
+               <tr>
+              	<td> <hr/> </td>
+              	<td> <hr/> </td>
+              	<td> <hr/> </td>
+              	<td> <hr/> </td>
+              	<td> <hr/> </td>              	
+              </tr>            
+           
             <tr>
-                <td style="width: 100px">Numero:</td>
-                <td>$pedido.id</td>
+                <td style="width: 100px">Fornecedor:</td>
+                <td>$pedido.fornecedor.nome</td>
             </tr>
+            
             <tr>
-                <td>Cliente:</td>
-                <td>$pedido.cliente.nome</td>
-            </tr>
+                <td style="width: 100px">Motorista:</td>
+                <td>$pedido.motorista.nome</td>  
+            </tr>           
+            
             <tr>
-            	<td>Endereço:</td>
-            	<td>$pedido.cliente.enderecos.logradouro</td>
-            </tr>
+                <td>RG:</td>
+                <td>$pedido.motorista.rg</td>  
+                <td>CPF:</td>
+                <td>$pedido.motorista.documentoReceitaFederal</td>                  
+            </tr>  
+            
             <tr>
-                <td>Valor total:</td>
-                <td>$numberTool.format("R$ #0.00", $pedido.valorTotal, $locale)</td>
+                <td>Placa Carreta:</td>
+                <td>$pedido.veiculo.placaCarreta</td>
+                <td>Placa Cavalo:</td>
+                <td>$pedido.veiculo.placaCavalo</td>
+                <td>CNH: $pedido.motorista.cnh</td>                
+            </tr> 
+             
+            <tr>
+                <td>Capacidade:</td>
+                <td>$pedido.veiculo.capacidade</td>  
+                <td>Compartimentos:</td>
+                <td>$pedido.veiculo.compartimentos</td>  
+                <td>Lacres:</td>
+                <td>$pedido.veiculo.lacres</td>
             </tr>
+            
+             <tr>
+              	<td> <hr/> </td>
+              	<td> <hr/> </td>
+              	<td> <hr/> </td>
+              	<td> <hr/> </td>
+              	<td> <hr/> </td>              
+            </tr>   
+            
+            <tr>
+            	<td>Pedido:</td>
+            	<td>$pedido.id</td>    
+            	<td>Data:</td>
+            	<td>$pedido.dataCriacao</td>
+            </tr>
+            <tr>	
+            	<td>Cliente:</td>
+            	<td>$pedido.cliente.nome</td>  
+            </tr>
+            <tr>	
+            	<td>Endereco:</td>
+            	<td>$pedido.cliente.logradouro,</td>
+            	<td>$pedido.cliente.numero</td>
+            </tr>
+            <tr>	
+            	<td>Municipio:</td>
+            	<td>$pedido.cliente.cidade</td> 
+            	<td>CEP:</td>
+            	<td>$pedido.cliente.cep</td>  
+            	<td>UF:</td>
+            	<td>$pedido.cliente.uf</td>
+            </tr>
+             
+            <tr>
+              	<td> <hr/> </td>
+              	<td> <hr/> </td>
+              	<td> <hr/> </td>
+              	<td> <hr/> </td>
+              	<td> <hr/> </td>              
+            </tr>  
+             
+            
         </table>
         
         <br/>
@@ -32,7 +108,7 @@
             	#if ($item.produto.id)
 	            <tr>
 	                <td>$item.produto.nome</td>
-	                <td>$numberTool.format("R$ #0.0000", $item.produto.valorUnitario, $locale)</td>
+	                <td>$numberTool.format("R$ #0.0000", $item.valorUnitario, $locale)</td>
 	                <td>$item.quantidade</td>
 	                <td>$numberTool.format("R$ #0.0000", $item.valorTotal, $locale)</td>
 	            </tr>

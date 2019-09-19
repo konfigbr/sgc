@@ -1,9 +1,7 @@
 package br.com.matrix.sgc.service;
 
 import java.io.Serializable;
-
 import javax.inject.Inject;
-
 import br.com.matrix.sgc.model.LancamentoReceber;
 import br.com.matrix.sgc.model.Pedido;
 import br.com.matrix.sgc.model.StatusPedido;
@@ -18,11 +16,7 @@ public class EmissaoPedidoService implements Serializable {
 	private CadastroPedidoService cadastroPedidoService;
 	
 	@Inject
-	private EstoqueService estoqueService;
-	
-	@Inject
 	private CadastroContasReceberService lancamentoService;
-	
 	
 	@Inject
 	private Pedidos pedidos;
@@ -36,8 +30,6 @@ public class EmissaoPedidoService implements Serializable {
 					+ pedido.getStatus().getDescricao() + ".");
 		}
 		
-		this.estoqueService.baixarItensEstoque(pedido);
-		
 		pedido.setStatus(StatusPedido.EMITIDO);
 		
 		pedido = this.pedidos.guardar(pedido);
@@ -48,8 +40,8 @@ public class EmissaoPedidoService implements Serializable {
 		lancamento.setDataVencimento(pedido.getDataCriacao());
 		lancamento.setValor(pedido.getValorTotal());
 		lancamento.setPedido(pedido);
-		lancamentoService.salvar(lancamento);
-		
+		lancamentoService.salvar(lancamento);		
+				
 		return pedido;
 	}
 	

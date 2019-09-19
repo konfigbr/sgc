@@ -40,8 +40,6 @@
 					<p:menubar styleClass="menu-sistema">
 						<p:submenu label="Cadastros">
 							<p:menuitem value="Clientes" outcome="/clientes/CadastroCliente"/>
-							<p:menuitem value="Usuários" />
-							<p:separator/>
 							<p:menuitem value="Fornecedores" outcome="/fornecedores/CadastroFornecedor" />
 							<p:menuitem value="Motoristas" outcome="/motoristas/CadastroMotorista"  />
 							<p:menuitem value="Produtos" outcome="/produtos/PesquisaProdutos" />
@@ -49,7 +47,7 @@
 						</p:submenu>
 						<p:submenu label="Financeiro">
 							<p:menuitem value="Contas à Pagar" outcome="/contaspagar/CadastroContasPagar" />
-							<p:menuitem value="Contas à Receber"  />
+							<p:menuitem value="Contas à Receber" outcome="/contasreceber/PesquisaContasReceber" />
 						</p:submenu>
 						<p:submenu label="Pedidos">
 							<p:menuitem value="Novo pedido" outcome="/pedidos/CadastroPedido" />
@@ -57,6 +55,8 @@
 						</p:submenu>
 						<p:submenu label="Relatórios">
 							<p:menuitem value="Pedidos emitidos" outcome="/relatorios/RelatorioPedidosEmitidos" />
+							<p:menuitem value="Contas à Receber" outcome="/relatorios/RelatorioContasReceber" />
+							<p:menuitem value="Contas à Pagar" outcome="/relatorios/RelatorioContasPagar" />
 						</p:submenu>
 						<p:menuitem value="Sair" url="/logout" />
 					</p:menubar>

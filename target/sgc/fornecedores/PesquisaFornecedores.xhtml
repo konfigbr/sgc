@@ -51,7 +51,7 @@
 	    				<f:param name="fornecedor" value="#{fornecedor.id}" />
 	    			</p:button>
 	    			<p:commandButton icon="ui-icon-trash" title="Excluir" oncomplete="PF('confirmacaoExclusao').show()"
-	    					process="@this" update=":frmPesquisa:confirmacaoExclusaoDialog">
+	    					process="@this" update=":frmPesquisa:confirmacaoExclusaoDialog" disabled="true">
 	    				<f:setPropertyActionListener target="#{pesquisaFornecedoresBean.fornecedorSelecionado}" value="#{fornecedor}" />
 	    			</p:commandButton>
 	    		</p:column>

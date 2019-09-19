@@ -1,17 +1,12 @@
 package br.com.matrix.sgc.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -25,11 +20,18 @@ public class Cliente implements Serializable {
 
 	private Long id;
 	private String nome;
+	private String contato;
 	private String email;
 	private String documentoReceitaFederal;
 	private TipoPessoa tipo;
-	private List<Endereco> enderecos = new ArrayList<>();
-
+	private String logradouro;
+	private String numero;
+	private String complemento;
+	private String cidade;
+	private String uf;
+	private String cep;
+	
+	
 	@Id
 	@GeneratedValue
 	public Long getId() {
@@ -50,6 +52,17 @@ public class Cliente implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
+	
+	@Size(max = 100)
+	@Column(nullable = false, length = 100)
+	public String getContato() {
+		return contato;
+	}
+
+	public void setContato(String contato) {
+		this.contato = contato;
+	}
 
 	@Column(nullable = false, length = 255)
 	public String getEmail() {
@@ -60,9 +73,9 @@ public class Cliente implements Serializable {
 		this.email = email;
 	}
 
-	@NotBlank
+	
 	@Size(max = 14)
-	@Column(name = "doc_receita_federal", nullable = false, length = 14)
+	@Column(name="doc_receita_federal", nullable = false, length = 14)
 	public String getDocumentoReceitaFederal() {
 		return documentoReceitaFederal;
 	}
@@ -79,17 +92,61 @@ public class Cliente implements Serializable {
 
 	public void setTipo(TipoPessoa tipo) {
 		this.tipo = tipo;
+	}	
+
+	@Column(nullable = false, length = 150)
+	public String getLogradouro() {
+		return logradouro;
 	}
 
-	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
-	public List<Endereco> getEnderecos() {
-		return enderecos;
+	public void setLogradouro(String logradouro) {
+		this.logradouro = logradouro;
 	}
 
-	public void setEnderecos(List<Endereco> enderecos) {
-		this.enderecos = enderecos;
+	@Column(nullable = false, length = 20)
+	public String getNumero() {
+		return numero;
 	}
 
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+
+	@Column(length = 150)
+	public String getComplemento() {
+		return complemento;
+	}
+
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
+	}
+
+	@Column(nullable = false, length = 60)
+	public String getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+
+	@Column(nullable = false, length = 60)
+	public String getUf() {
+		return uf;
+	}
+
+	public void setUf(String uf) {
+		this.uf = uf;
+	}
+
+	@Column(nullable = false, length = 9)
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;

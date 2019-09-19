@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="contasreceber" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="565b2469-5144-487d-b4a5-62a489f7b12e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Heading 1" fontSize="16" isBold="true"/>
+	<parameter name="data_fim" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="data_inicio" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     lancamento_receber.`id` AS lancamento_receber_id,
+     lancamento_receber.`data_lancamento` AS lancamento_receber_data_lancamento,
+     lancamento_receber.`data_pagamento` AS lancamento_receber_data_pagamento,
+     lancamento_receber.`data_vencimento` AS lancamento_receber_data_vencimento,
+     lancamento_receber.`descricao` AS lancamento_receber_descricao,
+     lancamento_receber.`observacao` AS lancamento_receber_observacao,
+     lancamento_receber.`valor` AS lancamento_receber_valor,
+     lancamento_receber.`pedido_id` AS lancamento_receber_pedido_id
+FROM
+     `lancamento_receber` lancamento_receber
+WHERE
+     lancamento_receber.`data_pagamento` IS NOT NULL
+ AND data_vencimento BETWEEN $P{data_inicio} AND $P{data_fim}]]>
+	</queryString>
+	<field name="lancamento_receber_id" class="java.lang.Long"/>
+	<field name="lancamento_receber_data_lancamento" class="java.sql.Timestamp"/>
+	<field name="lancamento_receber_data_pagamento" class="java.sql.Timestamp"/>
+	<field name="lancamento_receber_data_vencimento" class="java.sql.Timestamp"/>
+	<field name="lancamento_receber_descricao" class="java.lang.String"/>
+	<field name="lancamento_receber_observacao" class="java.lang.String"/>
+	<field name="lancamento_receber_valor" class="java.math.BigDecimal"/>
+	<field name="lancamento_receber_pedido_id" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="14" width="555" height="32" uuid="b58b177b-ccab-4310-93c0-3118d1ac0533"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="24"/>
+				</textElement>
+				<text><![CDATA[Relatório de Contas à Receber]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="78" width="555" height="1" uuid="e029f0bf-5dc6-4b01-9909-5a478f702c5c"/>
+			</line>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="80" height="20" uuid="df5da1aa-3f93-4637-a2c4-b07b9cca0d67"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<text><![CDATA[Lançamento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="90" y="0" width="78" height="20" uuid="84a8ccfe-4512-453c-82d0-1dd6a56455d1"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<text><![CDATA[Vencimento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="177" y="0" width="78" height="20" uuid="6e36ba7e-b1f6-4f11-8479-73fdf2e0bec7"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<text><![CDATA[Pagamento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="265" y="0" width="100" height="20" uuid="3053c48c-925e-446f-b5eb-e209efd5064d"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<text><![CDATA[Descrição]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="455" y="0" width="100" height="20" uuid="d588657b-7c2b-44b9-8d98-189199958ecd"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<text><![CDATA[Valor]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="19" width="555" height="1" uuid="9850afbe-c77e-4b3d-ba4a-34f3166099d2"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="0" y="0" width="80" height="20" uuid="540f3072-65c4-4153-bb9c-7f5f0ac301d5"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lancamento_receber_data_lancamento}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="90" y="0" width="78" height="20" uuid="0b74109f-ed4b-4c6a-9a0c-8de5500a7c08"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lancamento_receber_data_vencimento}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="177" y="0" width="78" height="20" uuid="435102bb-f960-478c-b920-399d566b8f03"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lancamento_receber_data_pagamento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="265" y="0" width="178" height="20" uuid="9828f914-8341-47bd-8c40-891e8bbbe024"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lancamento_receber_descricao}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="455" y="0" width="100" height="20" uuid="0f3d886a-5dd6-4a62-9f21-f998cb212e4e"/>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lancamento_receber_valor}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

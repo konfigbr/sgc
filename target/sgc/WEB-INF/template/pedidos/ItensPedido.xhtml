@@ -27,11 +27,14 @@
 			</p:autoComplete>
 		</p:column>
 		<p:column headerText="Valor unitário" style="text-align: right; width: 120px">
-			<h:outputText value="#{item.valorUnitario}" size="10" maxlength="10" styleClass="moeda" >
+			<p:inputText value="#{item.valorUnitario}" size="10" maxlength="10" styleClass="moeda" >
 				<f:convertNumber maxFractionDigits="4" minFractionDigits="4"/>
-			</h:outputText>
+				<p:ajax event="change" process="@this"
+					update="tabelaItens :frmCadastro:totalPedido :frmCadastro:subtotal valorTotal"
+					listener="#{cadastroPedidoBean.recalcularPedido}" />
+			</p:inputText>
 		</p:column>
-		<p:column headerText="Quantidade" style="text-align: center; width: 100px">
+		<p:column headerText="Quantidade" style="text-align: center; width: 150px">
 			<p:inputText size="8" value="#{item.quantidade}" disabled="#{cadastroPedidoBean.pedido.naoAlteravel}">
 				<p:ajax event="change" process="@this"
 					update="tabelaItens :frmCadastro:totalPedido :frmCadastro:subtotal"
@@ -39,27 +42,15 @@
 			</p:inputText>
 		</p:column>
 		
-		<p:column headerText="Estoque" style="text-align: center; width: 100px">
-			<h:outputText value="#{item.produto.quantidadeEstoque}" 
-				style="#{item.estoqueInsuficiente ? 'color: red' : ''}"/>
-			
-			<h:graphicImage library="images" name="alerta.png" id="semEstoque"
-				style="vertical-align: bottom; margin-left: 5px" 
-				rendered="#{item.estoqueInsuficiente}" />
-				
-			<p:tooltip for="semEstoque" value="Estoque insuficiente"
-				rendered="#{item.estoqueInsuficiente}" />
-		</p:column>
-		
-		<p:column headerText="Valor total" style="text-align: right; width: 100px">
-			<h:outputText value="#{item.valorTotal}" size="10" maxlength="10" styleClass="moeda">
+		<p:column headerText="Valor total" style="text-align: right; width: 250px">
+			<h:outputText id="valorTotal" value="#{item.valorTotal}" size="10" maxlength="10" styleClass="moeda">
 					<f:convertNumber maxFractionDigits="4" minFractionDigits="4"/>
 			</h:outputText>
 		</p:column>
 		
 		<p:columnGroup type="footer">
 			<p:row>
-				<p:column colspan="5" footerText="Subtotal" style="text-align: right" />
+				<p:column colspan="4" footerText="Subtotal" style="text-align: right" />
 				<p:column style="text-align: right">
 					<f:facet name="footer">
 						<h:outputText value="#{cadastroPedidoBean.pedido.valorSubtotal}">

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="contaspagar" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="526b9fe0-8935-4c2f-acc1-d58240920f48">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="data_inicio" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="data_fim" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     lancamento_pagar.`id` AS lancamento_pagar_id,
+     lancamento_pagar.`data_lancamento` AS lancamento_pagar_data_lancamento,
+     lancamento_pagar.`data_pagamento` AS lancamento_pagar_data_pagamento,
+     lancamento_pagar.`data_vencimento` AS lancamento_pagar_data_vencimento,
+     lancamento_pagar.`descricao` AS lancamento_pagar_descricao,
+     lancamento_pagar.`observacao` AS lancamento_pagar_observacao,
+     lancamento_pagar.`valor` AS lancamento_pagar_valor
+FROM
+     `lancamento_pagar` lancamento_pagar
+WHERE
+     data_vencimento BETWEEN $P{data_inicio} AND $P{data_fim}]]>
+	</queryString>
+	<field name="lancamento_pagar_id" class="java.lang.Long"/>
+	<field name="lancamento_pagar_data_lancamento" class="java.sql.Timestamp"/>
+	<field name="lancamento_pagar_data_pagamento" class="java.sql.Timestamp"/>
+	<field name="lancamento_pagar_data_vencimento" class="java.sql.Timestamp"/>
+	<field name="lancamento_pagar_descricao" class="java.lang.String"/>
+	<field name="lancamento_pagar_observacao" class="java.lang.String"/>
+	<field name="lancamento_pagar_valor" class="java.math.BigDecimal"/>
+	<group name="lancamento_pagar_data_vencimento">
+		<groupExpression><![CDATA[$F{lancamento_pagar_data_vencimento}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="66" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="19" width="555" height="35" uuid="df910e73-84b7-4b2a-ade2-5c7526d11d95"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="24"/>
+				</textElement>
+				<text><![CDATA[Contas à Pagar]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="1" width="555" height="1" uuid="73b641bf-b8fb-48c9-ab8a-da6198a94d2f"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="2" width="81" height="20" uuid="6fdc421e-3542-4375-84d6-cb79013603bf"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Lançamento]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="22" width="555" height="1" uuid="4f7c5f24-6283-439c-9526-45385ea12b07"/>
+			</line>
+			<staticText>
+				<reportElement x="91" y="1" width="77" height="20" uuid="08dc8121-5dca-47ab-81e2-504382aedcf1"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Vencimento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="178" y="2" width="95" height="20" uuid="ed20cd45-dd50-4cee-9669-7ac4ed78ba49"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Pagamento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="283" y="2" width="100" height="20" uuid="af6556b9-f2d1-4e1a-8e0f-f60c1de01c79"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Descrição]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="455" y="2" width="100" height="20" uuid="8e0e7465-c161-4e7a-b30d-f0fbb70c8b51"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Valor]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="28" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="0" y="0" width="81" height="20" uuid="70a8f4c8-3f23-402e-afac-0ba043f5240d"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lancamento_pagar_data_lancamento}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="9d4a5273-bc59-4795-86f6-d34692cc6c81"/>
+			</line>
+			<textField>
+				<reportElement x="91" y="1" width="77" height="20" uuid="e5bb572c-11e5-4847-86bd-2aa6b8cac0a5"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lancamento_pagar_data_vencimento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="178" y="1" width="95" height="20" uuid="a586739a-96b6-41be-91c9-ecfe4795fe9c"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lancamento_pagar_data_pagamento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="283" y="1" width="162" height="20" uuid="bffb12b7-e3e0-4c8a-8584-ac46b5c857ef"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lancamento_pagar_descricao}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="455" y="1" width="100" height="20" uuid="1485019a-5c01-45b3-bf4a-a7687d0446c3"/>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lancamento_pagar_valor}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

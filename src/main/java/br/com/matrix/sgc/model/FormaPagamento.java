@@ -3,12 +3,8 @@ package br.com.matrix.sgc.model;
 public enum FormaPagamento {
 
 	DINHEIRO("Dinheiro"), 
-	CARTAO_CREDITO("Cartão de crédito"), 
-	CARTAO_DEBITO("Cartão de débito"), 
-	CHEQUE("Cheque"), 
-	BOLETO_BANCARIO("Boleto bancário"), 
-	DEPOSITO_BANCARIO("Depósito bancário");
-	
+	BOLETO_BANCARIO("Boleto bancário"); 
+		
 	private String descricao;
 	
 	FormaPagamento(String descricao) {

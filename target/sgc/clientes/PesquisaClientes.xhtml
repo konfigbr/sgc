@@ -45,13 +45,16 @@
 	    		<p:column headerText="CPF/CNPJ" style="width: 300px">
 	    			<h:outputText value="#{cliente.documentoReceitaFederal}" converter="cpfCnpjMask"/>
 	    		</p:column>
-	    		
+	    		<p:column headerText="Contato">
+	    			<h:outputText value="#{cliente.contato}" />
+	    		</p:column>
+	    		    		
 	    		<p:column style="width: 100px; text-align: center">
 	    			<p:button outcome="/clientes/CadastroCliente" icon="ui-icon-pencil" title="Editar">
 	    				<f:param name="cliente" value="#{cliente.id}" />
 	    			</p:button>
 	    			<p:commandButton icon="ui-icon-trash" title="Excluir" oncomplete="PF('confirmacaoExclusao').show()"
-	    					process="@this" update=":frmPesquisa:confirmacaoExclusaoDialog">
+	    					process="@this" update=":frmPesquisa:confirmacaoExclusaoDialog" disabled="true">
 	    				<f:setPropertyActionListener target="#{pesquisaClientesBean.clienteSelecionado}" value="#{cliente}" />
 	    			</p:commandButton>
 	    		</p:column>

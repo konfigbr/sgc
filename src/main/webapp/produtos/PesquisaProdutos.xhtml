@@ -41,17 +41,6 @@
 	    		<p:column headerText="Nome">
 	    			<h:outputText value="#{produto.nome}" />
 	    		</p:column>
-	    		<p:column headerText="Categoria" style="width: 250px">
-	    			<h:outputText value="#{produto.categoria.categoriaPai.descricao} - #{produto.categoria.descricao}"/>
-	    		</p:column>
-	    		<p:column headerText="Valor unitário" style="text-align: right; width: 120px">
-	    			<h:outputText value="#{produto.valorUnitario}">
-	    				<f:convertNumber type="currency"/>
-	    			</h:outputText>
-	    		</p:column>
-	    		<p:column headerText="Estoque" style="text-align: center; width: 100px">
-	    			<h:outputText value="#{produto.quantidadeEstoque}" />
-	    		</p:column>
 	    		<p:column style="width: 100px; text-align: center">
 	    			<p:button outcome="/produtos/CadastroProduto" icon="ui-icon-pencil" title="Editar">
 	    				<f:param name="produto" value="#{produto.id}" />

@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="pedido" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="145a8eae-235d-4322-98a0-1367c889aba2">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="5"/>
+	<parameter name="pedido" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     pedido.`id` AS pedido_id,
+     pedido.`data_criacao` AS pedido_data_criacao,
+     pedido.`data_entrega` AS pedido_data_entrega,
+     pedido.`valor_total` AS pedido_valor_total,
+     item_pedido.`quantidade` AS item_pedido_quantidade,
+     item_pedido.`valor_unitario` AS item_pedido_valor_unitario,
+     cliente.`nome` AS cliente_nome,
+     cliente.`numero` AS cliente_numero,
+     cliente.`uf` AS cliente_uf,
+     fornecedor.`nome` AS fornecedor_nome,
+     motorista.`cnh` AS motorista_cnh,
+     motorista.`rg` AS motorista_rg,
+     item_pedido.`pedido_id` AS item_pedido_pedido_id,
+     cliente.`cep` AS cliente_cep,
+     cliente.`cidade` AS cliente_cidade,
+     cliente.`contato` AS cliente_contato,
+     cliente.`doc_receita_federal` AS cliente_doc_receita_federal,
+     cliente.`logradouro` AS cliente_logradouro,
+     motorista.`nome` AS motorista_nome,
+     motorista.`doc_receita_federal` AS motorista_doc_receita_federal,
+     produto.`nome` AS produto_nome,
+     usuario.`nome` AS usuario_nome,
+     veiculo.`capacidade` AS veiculo_capacidade,
+     veiculo.`compartimentos` AS veiculo_compartimentos,
+     veiculo.`lacres` AS veiculo_lacres,
+     veiculo.`placa_carreta` AS veiculo_placa_carreta,
+     veiculo.`placa_cavalo` AS veiculo_placa_cavalo,
+     item_pedido.`id` AS item_pedido_id,
+     produto.`id` AS produto_id,
+     fornecedor.`contato` AS fornecedor_contato
+FROM
+     `pedido` pedido INNER JOIN `item_pedido` item_pedido ON pedido.`id` = item_pedido.`pedido_id`
+     INNER JOIN `cliente` cliente ON pedido.`cliente_id` = cliente.`id`
+     INNER JOIN `fornecedor` fornecedor ON pedido.`fornecedor_id` = fornecedor.`id`
+     INNER JOIN `motorista` motorista ON pedido.`motorista_id` = motorista.`id`
+     INNER JOIN `usuario` usuario ON pedido.`vendedor_id` = usuario.`id`
+     INNER JOIN `produto` produto ON item_pedido.`produto_id` = produto.`id`
+     INNER JOIN `veiculo` veiculo ON pedido.`veiculo_id` = veiculo.`id`
+WHERE
+     pedido.id = $P{pedido}]]>
+	</queryString>
+	<field name="pedido_id" class="java.lang.Long"/>
+	<field name="pedido_data_criacao" class="java.sql.Timestamp"/>
+	<field name="pedido_data_entrega" class="java.sql.Date"/>
+	<field name="pedido_valor_total" class="java.math.BigDecimal"/>
+	<field name="item_pedido_quantidade" class="java.lang.Integer"/>
+	<field name="item_pedido_valor_unitario" class="java.math.BigDecimal"/>
+	<field name="cliente_nome" class="java.lang.String"/>
+	<field name="cliente_numero" class="java.lang.String"/>
+	<field name="cliente_uf" class="java.lang.String"/>
+	<field name="fornecedor_nome" class="java.lang.String"/>
+	<field name="motorista_cnh" class="java.lang.String"/>
+	<field name="motorista_rg" class="java.lang.String"/>
+	<field name="item_pedido_pedido_id" class="java.lang.Long"/>
+	<field name="cliente_cep" class="java.lang.String"/>
+	<field name="cliente_cidade" class="java.lang.String"/>
+	<field name="cliente_contato" class="java.lang.String"/>
+	<field name="cliente_doc_receita_federal" class="java.lang.String"/>
+	<field name="cliente_logradouro" class="java.lang.String"/>
+	<field name="motorista_nome" class="java.lang.String"/>
+	<field name="motorista_doc_receita_federal" class="java.lang.String"/>
+	<field name="produto_nome" class="java.lang.String"/>
+	<field name="usuario_nome" class="java.lang.String"/>
+	<field name="veiculo_capacidade" class="java.lang.String"/>
+	<field name="veiculo_compartimentos" class="java.lang.String"/>
+	<field name="veiculo_lacres" class="java.lang.String"/>
+	<field name="veiculo_placa_carreta" class="java.lang.String"/>
+	<field name="veiculo_placa_cavalo" class="java.lang.String"/>
+	<field name="item_pedido_id" class="java.lang.Long"/>
+	<field name="produto_id" class="java.lang.Long"/>
+	<field name="fornecedor_contato" class="java.lang.String"/>
+	<group name="pedido_id">
+		<groupExpression><![CDATA[$F{pedido_id}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="23" width="555" height="36" uuid="ff2efac4-49cd-478f-ad03-89e0962e0d50"/>
+				<textElement textAlignment="Center">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Quality - Petro]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="227" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="25" height="20" uuid="591ee8f0-1b8d-4749-804e-b9662610b9d6"/>
+				<text><![CDATA[De:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="30" width="25" height="20" uuid="10a4e5ff-8ab8-4cb2-8e18-8f5d8b24750d"/>
+				<text><![CDATA[Para:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="35" y="0" width="506" height="20" uuid="e404d4a6-3f30-429f-a1c7-ae6dc9f7a2ab"/>
+				<textFieldExpression><![CDATA[$F{usuario_nome}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="61" width="555" height="1" uuid="fc2bda01-e277-498e-81d9-be1969bafbb2"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="72" width="62" height="20" uuid="1d2f2110-02a9-4272-abfb-bf174ee4c586"/>
+				<text><![CDATA[Fornecedor:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="84" y="72" width="457" height="20" uuid="ff82584c-de37-4b53-81bf-16a6b18eb49f"/>
+				<textFieldExpression><![CDATA[$F{fornecedor_nome}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="103" width="62" height="20" uuid="70bf4df5-a8a5-4841-b08c-df6a77822a12"/>
+				<text><![CDATA[Motorista:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="84" y="103" width="457" height="20" uuid="2810a896-ab81-499e-a547-877449da53ea"/>
+				<textFieldExpression><![CDATA[$F{motorista_nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="84" y="133" width="90" height="20" uuid="0fce381e-4a6d-48e5-bff9-96101ee2d5e4"/>
+				<textFieldExpression><![CDATA[$F{motorista_rg}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="224" y="133" width="169" height="20" uuid="01583982-35e1-47ec-87d5-7c736cde766b"/>
+				<textFieldExpression><![CDATA[$F{motorista_doc_receita_federal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="133" width="62" height="20" uuid="7db9c4a1-d4a5-4bb8-9cd7-08020311601a"/>
+				<text><![CDATA[RG:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="184" y="133" width="29" height="20" uuid="c3619da4-0e70-4b2b-9b10-3fba10673f6b"/>
+				<text><![CDATA[CPF:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="405" y="133" width="29" height="20" uuid="31977eee-e979-4fb3-bc3e-00d12e5775fa"/>
+				<text><![CDATA[CNH:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="441" y="133" width="100" height="20" uuid="99c2c63e-6784-4557-ba0e-529bbab5ce5b"/>
+				<textFieldExpression><![CDATA[$F{motorista_cnh}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="84" y="167" width="129" height="20" uuid="023d6f26-bc36-4b24-84f0-db11f9e336bd"/>
+				<textFieldExpression><![CDATA[$F{veiculo_placa_carreta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="314" y="167" width="165" height="20" uuid="c34693d1-1dac-4fe0-bc3b-8a587e2ed653"/>
+				<textFieldExpression><![CDATA[$F{veiculo_placa_cavalo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="167" width="74" height="20" uuid="15405fe8-c06f-45f2-bab0-ab32b5c02bb0"/>
+				<text><![CDATA[Placa Carreta:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="224" y="167" width="74" height="20" uuid="4219327c-c4a9-4c6c-b550-4c602e1d7caf"/>
+				<text><![CDATA[Placa Cavalo:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="84" y="197" width="90" height="20" uuid="61c777df-f4a6-4462-b583-c58d1d580033"/>
+				<textFieldExpression><![CDATA[$F{veiculo_capacidade}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="268" y="197" width="137" height="20" uuid="16ee5f54-40f2-441a-a090-13f2e407cc35"/>
+				<textFieldExpression><![CDATA[$F{veiculo_compartimentos}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="197" width="74" height="20" uuid="8cd6f6dc-fe2a-4c76-886c-88168eb2faf1"/>
+				<text><![CDATA[Capacidade:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="184" y="197" width="74" height="20" uuid="753cc63f-d846-4583-bc40-fa60e4343720"/>
+				<text><![CDATA[Compartimentos:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="415" y="197" width="45" height="20" uuid="66397164-f355-4f4b-bcc0-1029d2a068a6"/>
+				<text><![CDATA[Lacres:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="471" y="197" width="70" height="20" uuid="5b7da50a-27ff-41eb-ba49-eaa168903abd"/>
+				<textFieldExpression><![CDATA[$F{veiculo_lacres}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="221" width="555" height="1" uuid="80a97b24-aa84-44a7-9644-8a8c5e30506a"/>
+			</line>
+			<textField>
+				<reportElement x="35" y="30" width="504" height="20" uuid="a9f07de4-fa69-455c-babf-4ede9322ca22"/>
+				<textFieldExpression><![CDATA[$F{fornecedor_contato}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="169" splitType="Stretch">
+			<textField>
+				<reportElement x="72" y="13" width="100" height="20" uuid="d7131469-8546-42a1-9dc2-8c07b04912ba"/>
+				<textFieldExpression><![CDATA[$F{pedido_id}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="13" width="46" height="20" uuid="2587e108-3b83-46f6-88d1-d92c79795358"/>
+				<textElement markup="none"/>
+				<text><![CDATA[Pedido:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="43" width="46" height="20" uuid="a2609ffd-3bf4-4d39-b418-f49d20f3e476"/>
+				<textElement markup="none"/>
+				<text><![CDATA[Cliente:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="72" y="43" width="477" height="20" uuid="40b054da-76a5-498c-b1e4-df842a049fa8"/>
+				<textFieldExpression><![CDATA[$F{cliente_nome}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="369" y="13" width="46" height="20" uuid="a0bed5c9-930f-458d-a1e6-b3973e59031e"/>
+				<textElement markup="none"/>
+				<text><![CDATA[Data:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="434" y="13" width="105" height="20" uuid="76c7141b-a5c2-4c8e-960b-9486fda04f8a"/>
+				<textFieldExpression><![CDATA[$F{pedido_data_criacao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="72" y="73" width="236" height="20" uuid="b5f8628d-6fb3-49c1-b657-01c13c89793c"/>
+				<textFieldExpression><![CDATA[$F{cliente_logradouro}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="441" y="73" width="100" height="20" uuid="def6b3e9-ce85-409e-ba5b-5f39b005f556"/>
+				<textFieldExpression><![CDATA[$F{cliente_numero}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="73" width="46" height="20" uuid="b93e84c6-2bc5-4f51-bb94-045cc721c38a"/>
+				<textElement markup="none"/>
+				<text><![CDATA[Endereço:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="73" width="46" height="20" uuid="d195003a-4d3c-4510-b479-6fc943386e2c"/>
+				<textElement markup="none"/>
+				<text><![CDATA[Número:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="72" y="104" width="100" height="20" uuid="fea880d1-68bc-4018-aba5-735c67b68eef"/>
+				<textFieldExpression><![CDATA[$F{cliente_cidade}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#####-###">
+				<reportElement x="260" y="105" width="100" height="20" uuid="1b3c9bfb-48f8-42b3-a2db-a1c11eb75045"/>
+				<textFieldExpression><![CDATA[$F{cliente_cep}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="441" y="105" width="100" height="20" uuid="74c9ab4a-a81f-471c-beee-cf00afbb9d4f"/>
+				<textFieldExpression><![CDATA[$F{cliente_uf}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="103" width="46" height="20" uuid="a6058d0b-37b1-4623-a24f-656ad2124db8"/>
+				<textElement markup="none"/>
+				<text><![CDATA[Cidade:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="103" width="46" height="20" uuid="172e3eb8-630c-4510-9a7e-00ccec54e074"/>
+				<textElement markup="none"/>
+				<text><![CDATA[CEP:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="103" width="46" height="20" uuid="8550c6d9-70ed-4487-a7fb-ffe597dfdea9"/>
+				<textElement markup="none"/>
+				<text><![CDATA[UF:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="72" y="135" width="100" height="20" uuid="f72bd99c-5a53-4e2f-86fc-742772ec5844"/>
+				<textFieldExpression><![CDATA[$F{item_pedido_quantidade}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="133" width="62" height="20" uuid="32bcff62-1e47-4b63-b3f2-ce209f0c8cd3"/>
+				<textElement markup="none"/>
+				<text><![CDATA[Quantidade:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="133" width="46" height="20" uuid="613a520d-b776-4b4b-a6c3-5f37bbcf8a8e"/>
+				<textElement markup="none"/>
+				<text><![CDATA[Produto:]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.0000">
+				<reportElement x="441" y="135" width="100" height="20" uuid="e00293f7-a332-41dc-8441-ecd205f0cf4c"/>
+				<textFieldExpression><![CDATA[$F{item_pedido_valor_unitario}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="380" y="133" width="46" height="20" uuid="bebffdda-9329-48f7-9fe8-db1cc5aae527"/>
+				<textElement markup="none"/>
+				<text><![CDATA[Preço:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="159" width="555" height="1" uuid="23ea96d8-7ee3-40ec-bf93-69602df46820"/>
+			</line>
+			<textField>
+				<reportElement x="258" y="135" width="100" height="20" uuid="b329fb6d-f61b-4099-8253-d1f7aab83499"/>
+				<textFieldExpression><![CDATA[$F{produto_nome}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="2" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="1" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

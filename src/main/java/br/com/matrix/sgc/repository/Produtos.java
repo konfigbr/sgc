@@ -3,7 +3,6 @@ package br.com.matrix.sgc.repository;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -11,14 +10,9 @@ import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Fetch;
-import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-
 import org.apache.commons.lang3.StringUtils;
-
-import br.com.matrix.sgc.model.Categoria;
 import br.com.matrix.sgc.model.Produto;
 import br.com.matrix.sgc.repository.filter.ProdutoFilter;
 import br.com.matrix.sgc.service.NegocioException;
@@ -62,8 +56,6 @@ public class Produtos implements Serializable {
 		List<Predicate> predicates = new ArrayList<>();
 		
 		Root<Produto> produtoRoot = criteriaQuery.from(Produto.class);
-		Fetch<Produto, Categoria> categoriaJoin = produtoRoot.fetch("categoria", JoinType.INNER);
-		categoriaJoin.fetch("categoriaPai", JoinType.INNER);
 		
 		if (StringUtils.isNotBlank(filtro.getSku())) {
 			predicates.add(builder.equal(produtoRoot.get("sku"), filtro.getSku()));

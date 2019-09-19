@@ -1,0 +1,33 @@
+<ui:composition template="/WEB-INF/template/LayoutPadrao.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="titulo">Envio de Pedido por E-mail</ui:define>
+    
+    <ui:define name="corpo">
+    	<h:form id="frm">
+	    	<h1>Envio de Pedido por E-mail</h1>
+	    	
+	    	<p:messages autoUpdate="true" closable="true" />
+	    	
+	    	<p:toolbar style="margin-top: 20px">
+	    		<p:toolbarGroup>
+	    			<p:commandButton value="Enviar por e-mail" action="#{envioPedidoEmailBean.enviar}"/>
+	    		</p:toolbarGroup>
+	    	</p:toolbar>
+	    	
+	    	<p:panelGrid columns="2" id="painel" style="width: 100%; margin-top: 20px"
+	    			columnClasses="rotulo, campo">
+	    		<p:outputLabel value="Informe o Email" />
+	    		<h:panelGroup>
+		    		<p:inputText value="#{envioPedidoEmailBean.email}" label="email" 
+		    			 		size="10" />
+		    		<p:spacer width="8" />		    		
+		    	</h:panelGroup>
+	    	</p:panelGrid>
+    	</h:form>
+    </ui:define>
+</ui:composition>

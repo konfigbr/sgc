@@ -15,14 +15,12 @@ br\com\matrix\sgc\controller\PesquisaPedidosBean.class
 br\com\matrix\sgc\model\LancamentoPagar.class
 br\com\matrix\sgc\repository\Produtos.class
 br\com\matrix\sgc\service\CadastroMotoristaService.class
-br\com\matrix\sgc\model\Categoria.class
 br\com\matrix\sgc\controller\PesquisaLancamentosPagarBean.class
-br\com\matrix\sgc\service\EstoqueService.class
 br\com\matrix\sgc\controller\CadastroLancamentoPagarBean.class
 br\com\matrix\sgc\repository\filter\LancamentoReceberFilter.class
-br\com\matrix\sgc\converter\CategoriaConverter.class
 br\com\matrix\sgc\service\CadastroPedidoService.class
 br\com\matrix\sgc\controller\GraficoPedidosCriadosBean.class
+br\com\matrix\sgc\controller\RelatorioContasReceberBean.class
 br\com\matrix\sgc\util\mail\Mailer.class
 br\com\matrix\sgc\controller\SelecaoClienteBean.class
 br\com\matrix\sgc\model\Pedido.class
@@ -33,7 +31,6 @@ br\com\matrix\sgc\service\CadastroClienteService.class
 br\com\matrix\sgc\repository\filter\PedidoFilter.class
 br\com\matrix\sgc\service\CadastroProdutoService.class
 br\com\matrix\sgc\controller\CadastroMotoristaBean.class
-br\com\matrix\sgc\model\Endereco.class
 br\com\matrix\sgc\controller\CadastroLancamentoReceberBean.class
 br\com\matrix\sgc\repository\filter\MotoristaFilter.class
 br\com\matrix\sgc\controller\CadastroPedidoBean.class
@@ -59,8 +56,8 @@ br\com\matrix\sgc\util\jsf\FacesProducer.class
 br\com\matrix\sgc\controller\EnvioPedidoEmailBean.class
 br\com\matrix\sgc\controller\PesquisaFornecedoresBean.class
 br\com\matrix\sgc\service\NegocioException.class
-br\com\matrix\sgc\repository\Categorias.class
 br\com\matrix\sgc\controller\PesquisaMotoristasBean.class
+br\com\matrix\sgc\controller\RelatorioContasPagarBean.class
 br\com\matrix\sgc\converter\FornecedorConverter.class
 br\com\matrix\sgc\repository\LancamentosReceber.class
 br\com\matrix\sgc\controller\CancelamentoPedidoBean.class
@@ -93,6 +90,7 @@ br\com\matrix\sgc\security\AppUserDetailsService.class
 br\com\matrix\sgc\converter\ClienteConverter.class
 br\com\matrix\sgc\repository\LancamentosPagar.class
 br\com\matrix\sgc\converter\CpfCnpjMaskConverter.class
+br\com\matrix\sgc\controller\PesquisaLancamentosReceberBean.class
 br\com\matrix\sgc\repository\filter\FornecedorFilter.class
 br\com\matrix\sgc\repository\filter\LancamentoPagarFilter.class
 br\com\matrix\sgc\converter\VeiculoConverter.class

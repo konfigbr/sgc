@@ -8,6 +8,9 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name = "fornecedor")
@@ -17,6 +20,7 @@ public class Fornecedor implements Serializable {
 
 	private Long id;
 	private String nome;
+	private String contato;
 	private String email;
 	private String documentoReceitaFederal;
 	private TipoPessoa tipo;
@@ -32,6 +36,8 @@ public class Fornecedor implements Serializable {
 		this.id = id;
 	}
 
+	@NotBlank
+	@Size(max = 100)
 	@Column(nullable = false, length = 100)
 	public String getNome() {
 		return nome;
@@ -39,6 +45,15 @@ public class Fornecedor implements Serializable {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	
+	@Column(nullable = false, length = 100)
+	public String getContato() {
+		return contato;
+	}
+
+	public void setContato(String contato) {
+		this.contato = contato;
 	}
 
 	@Column(nullable = false, length = 255)
@@ -50,6 +65,7 @@ public class Fornecedor implements Serializable {
 		this.email = email;
 	}
 
+	
 	@Column(name = "doc_receita_federal", nullable = false, length = 14)
 	public String getDocumentoReceitaFederal() {
 		return documentoReceitaFederal;
